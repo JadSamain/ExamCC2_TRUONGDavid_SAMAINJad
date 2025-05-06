@@ -11,7 +11,7 @@ class MovieTagCount(MRJob):
 
     def mapper_get_tags(self, _, line):
         try:
-            userID, movieID, tag, timestamp = line.split('\t')
+            userID, movieID, tag, timestamp = line.split(',')
             yield movieID, 1
         except Exception:
             pass
