@@ -38,16 +38,11 @@ rm MovieTagCount.py &&
 wget https://raw.githubusercontent.com/JadSamain/ExamCC2_TRUONGDavid_SAMAINJad/refs/heads/main/MovieTagCount.py &&
 python MovieTagCount.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar hdfs:///user/maria_dev/tags.csv > MovieTagCount.txt
 ```
-Dans notre jeu de données, chaque ligne représente un tag ajouté par un utilisateur à un film, à une date précise. Autrement dit, une ligne = un tag associé à un film, par un utilisateur.
+Dans notre jeu de données, chaque ligne représente un tag ajouté par un utilisateur à un film à une date précise. 
 Pour compter combien de tags chaque film possède, voici les étapes :
-Mapper :
+- Mapper: À chaque fois qu’on rencontre un film, on émet la paire (movieID, 1) pour indiquer qu’il a reçu un tag.
+- Reducer: Dans l’étape de réduction, on regroupe toutes les paires ayant le même movieID, puis on additionne les 1. Cela nous donne le nombre total de tags associés à chaque film.
 
-Lors du mapping, on lit chaque ligne et on en extrait l’identifiant du film (movieID).
-À chaque fois qu’on rencontre un film, on émet la paire (movieID, 1) pour indiquer qu’il a reçu un tag.
-🔹 Reducer :
-
-Dans l’étape de réduction, on regroupe toutes les paires ayant le même movieID, puis on additionne les 1.
-Cela nous donne le nombre total de tags associés à chaque film.
 
 2. Combien de tags chaque utilisateur a-t-il ajoutés ?
 ```
@@ -55,6 +50,9 @@ rm UserTagCount.py &&
 wget https://raw.githubusercontent.com/JadSamain/ExamCC2_TRUONGDavid_SAMAINJad/refs/heads/main/UserTagCount.py &&
 python UserTagCount.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar hdfs:///user/maria_dev/tags.csv > UserTagCount.txt
 ```
+Même raisonnement que précedemment mais pour avoir le nombre d'utilisateur qui à ajouté un tag sur un film: 
+- Mapper: paire(userID, 1)
+- Reducer : userId, sum(count)
 
 ## C) Avec la configuration de Hadoop suivante (taille du bloc par défaut et taille du bloc = 64 Mo)
 
@@ -118,6 +116,7 @@ D'après le résultat du cmd, le "Total blocks" est de 1. Le fichier faisant 37M
 4. Combien de fois chaque tag a-t-il été utilisé pour taguer un film ?
 ```
 ```
+Même raisonnement
 
 5. Bonus : Pour chaque film, combien de tags le même utilisateur a-t-il introduits ?
 ```
