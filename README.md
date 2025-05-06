@@ -64,11 +64,56 @@ Par défaut :
 ```
 hdfs fsck /user/maria_dev/tags.csv -files -blocks
 ```
-On obtient un seul bloc avec le fichier tags.csv car la taille du fichier est de 37 mo alors que la taille par défaut est de 128 mo. Il est donc normal qu'on est un seul bloc.
+
+Résultat
+```
+Status: HEALTHY
+ Total size:    38810332 B
+ Total dirs:    0
+ Total files:   1
+ Total symlinks:                0
+ Total blocks (validated):      1 (avg. block size 38810332 B)
+ Minimally replicated blocks:   1 (100.0 %)
+ Over-replicated blocks:        0 (0.0 %)
+ Under-replicated blocks:       0 (0.0 %)
+ Mis-replicated blocks:         0 (0.0 %)
+ Default replication factor:    1
+ Average block replication:     1.0
+ Corrupt blocks:                0
+ Missing replicas:              0 (0.0 %)
+ Number of data-nodes:          1
+ Number of racks:               1
+FSCK ended at Wed Mar 26 11:44:49 UTC 2025 in 30 milliseconds
+```
+On obtient un seul bloc avec le fichier tags.csv car la taille du fichier est de 37 mo alors que la taille par défaut est de 128 mo. Il est donc normal qu'on ai un seul bloc.
 
 Config 64 mo :
 ```
+hdfs dfs -D dfs.blocksize=67108864 -put tags.csv
+hdfs fsck /user/maria_dev/tags.csv -files -blocks
 ```
+
+Résultat
+```
+Status: HEALTHY
+ Total size:    38810332 B
+ Total dirs:    0
+ Total files:   1
+ Total symlinks:                0
+ Total blocks (validated):      1 (avg. block size 38810332 B)
+ Minimally replicated blocks:   1 (100.0 %)
+ Over-replicated blocks:        0 (0.0 %)
+ Under-replicated blocks:       0 (0.0 %)
+ Mis-replicated blocks:         0 (0.0 %)
+ Default replication factor:    1
+ Average block replication:     1.0
+ Corrupt blocks:                0
+ Missing replicas:              0 (0.0 %)
+ Number of data-nodes:          1
+ Number of racks:               1
+FSCK ended at Wed Mar 26 11:44:49 UTC 2025 in 30 milliseconds
+```
+D'après le résultat du cmd, le "Total blocks" est de 1. Le fichier faisant 37Mo, soit inférieur à notre condition de 64Mo, 1 seul bloc est utilisé.
 
 4. Combien de fois chaque tag a-t-il été utilisé pour taguer un film ?
 ```
