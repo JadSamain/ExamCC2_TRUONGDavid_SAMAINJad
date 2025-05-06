@@ -30,7 +30,7 @@ pip install pathlib && pip install mrjob==0.7.4 && pip install PyYAML==5.4.1
 curl -O https://update.cs2c.com.cn/Mirror/centos/7/os/x86_64/Packages/nano-2.3.1-10.el7.x86_64.rpm && sudo rpm -ivh nano-2.3.1-10.el7.x86_64.rpm      
 ```
 
-## Avec la configuration par défaut de Hadoop
+## B) Avec la configuration par défaut de Hadoop
 
 1. Combien de tags chaque film possède-t-il ?
 ```
@@ -40,7 +40,7 @@ curl -O https://update.cs2c.com.cn/Mirror/centos/7/os/x86_64/Packages/nano-2.3.1
 ```
 ```
 
-## Avec la configuration de Hadoop suivante (taille du bloc par défaut et taille du bloc = 64 Mo)
+## C) Avec la configuration de Hadoop suivante (taille du bloc par défaut et taille du bloc = 64 Mo)
 
 3. Combien de blocs le fichier occupe-t-il dans HDFS dans chacune des configurations ?
 ```
