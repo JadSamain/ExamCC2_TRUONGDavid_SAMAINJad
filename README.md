@@ -38,6 +38,16 @@ rm MovieTagCount.py &&
 wget https://raw.githubusercontent.com/JadSamain/ExamCC2_TRUONGDavid_SAMAINJad/refs/heads/main/MovieTagCount.py &&
 python MovieTagCount.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar hdfs:///user/maria_dev/tags.csv > MovieTagCount.txt
 ```
+Dans notre jeu de données, chaque ligne représente un tag ajouté par un utilisateur à un film, à une date précise. Autrement dit, une ligne = un tag associé à un film, par un utilisateur.
+Pour compter combien de tags chaque film possède, voici les étapes :
+Mapper :
+
+Lors du mapping, on lit chaque ligne et on en extrait l’identifiant du film (movieID).
+À chaque fois qu’on rencontre un film, on émet la paire (movieID, 1) pour indiquer qu’il a reçu un tag.
+🔹 Reducer :
+
+Dans l’étape de réduction, on regroupe toutes les paires ayant le même movieID, puis on additionne les 1.
+Cela nous donne le nombre total de tags associés à chaque film.
 
 2. Combien de tags chaque utilisateur a-t-il ajoutés ?
 ```
