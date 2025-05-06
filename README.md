@@ -34,7 +34,8 @@ curl -O https://update.cs2c.com.cn/Mirror/centos/7/os/x86_64/Packages/nano-2.3.1
 
 1. Combien de tags chaque film possède-t-il ?
 ```
-wget https://raw.githubusercontent.com/JadSamain/ExamCC2_TRUONGDavid_SAMAINJad/refs/heads/main/MovieTagCount.py
+rm MovieTagCount.py &&
+wget https://raw.githubusercontent.com/JadSamain/ExamCC2_TRUONGDavid_SAMAINJad/refs/heads/main/MovieTagCount.py &&
 python MovieTagCount.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar hdfs:///user/maria_dev/tags.csv > output.txt
 ```
 
