@@ -115,8 +115,12 @@ D'après le résultat du cmd, le "Total blocks" est de 1. Le fichier faisant 37M
 
 4. Combien de fois chaque tag a-t-il été utilisé pour taguer un film ?
 ```
+rm TagCounter.py &&
+wget https://raw.githubusercontent.com/JadSamain/ExamCC2_TRUONGDavid_SAMAINJad/refs/heads/main/TagCounter/TagCounter.py &&
+python TagCounter.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar hdfs:///user/maria_dev/tags.csv > TagCounter.txt
 ```
-Même raisonnement
+Le fichier qui est crée après exécution permet de visualiser, pour chaque tag, le nombre d'occurences.
+
 
 5. Bonus : Pour chaque film, combien de tags le même utilisateur a-t-il introduits ?
 ```
