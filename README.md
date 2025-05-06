@@ -49,6 +49,14 @@ python UserTagCount.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-
 ## C) Avec la configuration de Hadoop suivante (taille du bloc par défaut et taille du bloc = 64 Mo)
 
 3. Combien de blocs le fichier occupe-t-il dans HDFS dans chacune des configurations ?
+
+Par défaut :
+```
+hdfs fsck /user/maria_dev/tags.csv -files -blocks
+```
+On obtient un seul bloc avec le fichier tags.csv car la taille du fichier est de 37 mo alors que la taille par défaut est de 128 mo. Il est donc normal qu'on est un seul bloc.
+
+Config 64 mo :
 ```
 ```
 
