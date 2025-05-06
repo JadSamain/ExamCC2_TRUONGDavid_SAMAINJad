@@ -124,4 +124,8 @@ Le fichier qui est crée après exécution permet de visualiser, pour chaque tag
 
 5. Bonus : Pour chaque film, combien de tags le même utilisateur a-t-il introduits ?
 ```
+rm UserTagCounter.py &&
+wget https://raw.githubusercontent.com/JadSamain/ExamCC2_TRUONGDavid_SAMAINJad/refs/heads/main/UserTagCounter/UserTagCounter.py &&
+python UserTagCounter.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar hdfs:///user/maria_dev/tags.csv > UserTagCounter.txt
 ```
+Le fichier généré à la fin de l'exécution permet de voir combien de tags sont utilisés par le même utilisateur
