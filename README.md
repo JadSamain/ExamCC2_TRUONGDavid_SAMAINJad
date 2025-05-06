@@ -1,5 +1,7 @@
 # ExamCC2_TRUONGDavid_SAMAINJad
 
+LIEN DU GITHUB : https://github.com/JadSamain/ExamCC2_TRUONGDavid_SAMAINJad
+
 ## A) Préparation
 
 1) Téléchargement des fichiers nécessaires
