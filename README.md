@@ -119,8 +119,9 @@ rm TagCounter.py &&
 wget https://raw.githubusercontent.com/JadSamain/ExamCC2_TRUONGDavid_SAMAINJad/refs/heads/main/TagCounter/TagCounter.py &&
 python TagCounter.py -r hadoop --hadoop-streaming-jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar hdfs:///user/maria_dev/tags.csv > TagCounter.txt
 ```
-Le fichier qui est crée après exécution permet de visualiser, pour chaque tag, le nombre d'occurences.
-
+Même raisonnement que précedemment mais pour avoir le nombre de tag par tag: 
+- Mapper: paire(tag, 1)
+- Reducer : tag, sum(count)
 
 5. Bonus : Pour chaque film, combien de tags le même utilisateur a-t-il introduits ?
 ```
