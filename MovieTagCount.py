@@ -14,7 +14,6 @@ class MovieTagCount(MRJob):
             userID, movieID, tag, timestamp = line.split('\t')
             yield movieID, 1
         except Exception:
-            # Ignorer les lignes mal formées
             pass
 
     def reducer_count_tags(self, movieID, counts):
