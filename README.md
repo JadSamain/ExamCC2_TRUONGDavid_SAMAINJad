@@ -63,3 +63,7 @@ Config 64 mo :
 4. Combien de fois chaque tag a-t-il été utilisé pour taguer un film ?
 ```
 ```
+
+5. Bonus : Pour chaque film, combien de tags le même utilisateur a-t-il introduits ?
+```
+```
